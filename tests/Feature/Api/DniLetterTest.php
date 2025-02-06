@@ -10,24 +10,17 @@ class DniLetterTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_example(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_IfCanCalculateDniLetter()
+    public function test_CheckIfCanCalculateDniLetter()
     {
         $response = $this->post(route('apiCalculator'), [
             'number' => 12345678
         ]);
 
         $response->assertStatus(200)
-                 ->assertJsonStructure(['letter']);
+                 ->assertJson(["letter" => "Z"]);
     }
 
-    public function test_IfGetAnInvalidNumberOfDni()
+    public function test_CheckIfGetAnInvalidNumberOfDni()
     {
         $response = $this->post(route('apiCalculator'), [
             'number' => '-1'
