@@ -23,9 +23,5 @@ class DniLetterController extends Controller
         if ($letter) {
             return response()->json(['letter' => $letter->letter]);
         } 
-        
-        if (!$letter) {
-            return response()->json(['error' => 'No se pudo encontrar la letra correspondiente.'], 500);
-        }
     }
 }
